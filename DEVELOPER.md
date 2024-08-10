@@ -30,6 +30,8 @@ DB_URL=postgres://your-database-user:your-password@localhost:5432/your-database
 OTHER_ENV_VAR=value
 ```
 
+NOTE: If there is any issue with the database connection, try to change the enviroment variable DB_URL from the connection.ts and drizzle.config.ts file to your database-url using the template provided above.
+
 ## 4. Set Up the Database
 Make sure your database is set up and running. If you are using PostgreSQL, you can use the following commands to create the necessary tables.
 
