@@ -1,7 +1,17 @@
 import type { Config } from "drizzle-kit";
+import dotenv from "dotenv";
 
-export default {
+dotenv.config({ path: "./.env.local" });
+
+const databaseUrl = process.env.DB_URL!;
+const config: Config = {
   schema: "./src/db/schema/index.ts",
-  out: "./drizzle",
+  out: "./drizzleee",
   dialect: "postgresql",
-} satisfies Config;
+  dbCredentials: {
+    url: databaseUrl,
+  },
+};
+
+export default config;
+console.log("Database URL:", process.env.DB_URL);
