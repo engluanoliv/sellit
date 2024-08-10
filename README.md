@@ -26,7 +26,7 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 Fetches all products from the database.
 
 * Response:
-** Success:
+  * Success:
 ```json
 [
   {
@@ -40,11 +40,10 @@ Fetches all products from the database.
     "price": 100.00,
     "updated_at": "2024-08-10T00:00:00Z",
     "created_at": "2024-08-10T00:00:00Z"
-  },
-  ...
+  }
 ]
 ```
-** Error:
+  * Error:
 ```json
 {
   "error": "Failed to fetch products"
@@ -55,7 +54,7 @@ Fetches all products from the database.
 Creates one or more products in the database.
 
 * Request body:
-** Single Product:
+  * Single Product:
 ```json
 {
   "name": "Product Name",
@@ -85,7 +84,7 @@ Creates one or more products in the database.
     }
 ]
 ```
-** Multiple products:
+  * Multiple products:
 ```json
 [
     {
@@ -110,13 +109,13 @@ Creates one or more products in the database.
 ```
 
 * Response:
-** Success:
+  * Success:
 ```json
 {
   "message": "Product(s) created successfully"
 }
 ```
-** Error:
+  * Error:
 ```json
 {
   "error": "Failed to create product(s)"
@@ -127,7 +126,7 @@ Creates one or more products in the database.
 Fetches the details of a specific product by its ID.
 
 * Response:
-** Success
+  * Success
 ```json
 {
   "id": "unique-product-id",
@@ -142,7 +141,7 @@ Fetches the details of a specific product by its ID.
   "created_at": "2024-08-10T00:00:00Z"
 }
 ```
-** Error:
+  * Error:
 ```json
 {
   "error": "Failed to fetch product details"
