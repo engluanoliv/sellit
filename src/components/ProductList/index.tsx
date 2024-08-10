@@ -22,7 +22,7 @@ export default function ProductList() {
   return (
     <>
       <div className="flex flex-col items-center">
-        <h1 className="text-xl">Product List</h1>
+        <h1 className="text-lg py-5 font-semibold">Product List</h1>
         {isFetching ? (
           <p className="text-green-900">Fetching products from database...</p>
         ) : (

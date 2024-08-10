@@ -9,46 +9,42 @@ export const createProducts = async (
   req: NextRequest
 ): Promise<NextResponse> => {
   try {
-    // parse and validate the product data
-    const newProduct: Product = await req.json();
+    // parse the product data
+    const data = await req.json();
 
-    const validationError = validateProductData(newProduct);
-    if (validationError) return validationError;
+    // check if is only one product or an array of products
+    const products: Product[] = Array.isArray(data) ? data : [data];
 
-    // desctructure product data
-    const {
-      name,
-      description,
-      producer_name,
-      producer_email,
-      cover,
-      thumbnail,
-      price,
-      updated_at,
-      created_at,
-    } = newProduct;
+    //validate each product
+    for (const product of products) {
+      const validationError = validateProductData(product);
+      if (validationError) return validationError;
+    }
 
-    // insert product into database
-    await db.insert(productsTable).values({
+    // desctructure product for insertion
+    const productValues = products.map((product) => ({
       id: generateUlid(),
       category_id: generateUlid(),
-      name,
-      description,
-      producer_name,
-      producer_email,
-      cover,
-      thumbnail,
-      price,
-      updated_at: updated_at ? new Date(updated_at) : undefined,
-      created_at: created_at ? new Date(created_at) : undefined,
-    });
+      name: product.name,
+      description: product.description,
+      producer_name: product.producer_name,
+      producer_email: product.producer_email,
+      cover: product.cover,
+      thumbnail: product.thumbnail,
+      price: product.price,
+      updated_at: product.updated_at ? new Date(product.updated_at) : undefined,
+      created_at: product.created_at ? new Date(product.created_at) : undefined,
+    }));
+
+    // insert product into database
+    await db.insert(productsTable).values(productValues);
 
     return NextResponse.json(
       { message: "Product created successfully" },
       { status: 201 }
     );
   } catch (error) {
-    console.log(error);
+    console.log("Error creating product: ", error);
 
     return NextResponse.json(
       { error: "Failed to create a new product" },
