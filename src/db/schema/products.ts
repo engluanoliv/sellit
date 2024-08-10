@@ -1,4 +1,3 @@
-import { InferSelectModel } from "drizzle-orm";
 import {
   pgTable,
   text,
@@ -20,5 +19,3 @@ export const productsTable = pgTable("products", {
   updated_at: timestamp("updated_at").defaultNow().notNull(),
   created_at: timestamp("created_at").defaultNow().notNull(),
 });
-
-export type Product = InferSelectModel<typeof productsTable>;

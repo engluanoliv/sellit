@@ -1,6 +1,7 @@
 import { db } from "@/db/connection";
-import { Product, productsTable } from "@/db/schema";
 import { eq } from "drizzle-orm";
+import { Product } from "@/types/product";
+import { productsTable } from "@/db/schema";
 import { NextRequest, NextResponse } from "next/server";
 
 export const getProductDetails = async (

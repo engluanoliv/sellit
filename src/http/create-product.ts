@@ -1,6 +1,7 @@
 import { db } from "@/db/connection";
-import { Product, productsTable } from "@/db/schema";
+import { Product } from "@/types/product";
 import { generateUlid } from "@/utils/ulid";
+import { productsTable } from "@/db/schema";
 import { validateProductData } from "@/validation/productValidation";
 import { NextRequest, NextResponse } from "next/server";
 

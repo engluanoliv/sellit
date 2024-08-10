@@ -1,4 +1,4 @@
-import { Product } from "@/db/schema";
+import { Product } from "@/types/product";
 import { NextResponse } from "next/server";
 
 export function validateProductData(product: Product) {
