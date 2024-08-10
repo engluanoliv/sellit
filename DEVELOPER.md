@@ -34,13 +34,16 @@ OTHER_ENV_VAR=value
 Make sure your database is set up and running. If you are using PostgreSQL, you can use the following commands to create the necessary tables.
 
 Run the schema migration script to create the required tables:
+First run the drizzle-kit to create a drizzle folder, after run drizzle-kit migrate to create the table.
 
 ```bash
 npx drizzle-kit generate
-npx drizzle-kit migrate
+npx drizzle-kit migrate;
 ```
 
-Create mannualy the table using the sql query with the generated script in the drizzle folder, or, use the script bellow to do this.
+NOTE: You will see in the prompt the message "Migrations applied successfully" after run the migrate command and the table is already created.
+
+NOTE: Create mannualy the table using the sql query with the generated script in the drizzle folder if the migrate did not work. So, only run the code bellow if the migrate did not work.
 
 ```bash
 CREATE TABLE IF NOT EXISTS products (

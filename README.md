@@ -149,8 +149,6 @@ Fetches the details of a specific product by its ID.
 }
 ```
 
-
-
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
