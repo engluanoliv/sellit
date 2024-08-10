@@ -5,7 +5,7 @@
 
 ## 1. Clone the Repository
 
-```
+```bash
 git clone <repository-url>
 cd <repository-directory>
 ```
@@ -13,14 +13,14 @@ cd <repository-directory>
 ## 2. Install Dependencies
 Ensure you have Node.js installed. Run the following command to install the necessary dependencies:
 
-```
+```bash
 npm install
 ```
 
 ## 3. Set Up Environment Variables
 Create a .env.local file in the root directory of the project. Use the provided template bellow and update it with your environment-specific values:
 
-```
+```bash
 DB_HOST=localhost
 DB_PORT=5432
 DB_USER=your-database-user
@@ -35,13 +35,14 @@ Make sure your database is set up and running. If you are using PostgreSQL, you 
 
 Run the schema migration script to create the required tables:
 
-```
+```bash
 npx drizzle-kit generate
+npx drizzle-kit migrate
 ```
 
 Create mannualy the table using the sql query with the generated script in the drizzle folder, or, use the script bellow to do this.
 
-```
+```bash
 CREATE TABLE IF NOT EXISTS products (
   id VARCHAR(26) PRIMARY KEY,
   category_id VARCHAR(26) NOT NULL,
@@ -60,7 +61,7 @@ CREATE TABLE IF NOT EXISTS products (
 ## 5. Run the Application
 Start the development server with:
 
-```
+```bash
 npm run dev
 ```
 Access the application at http://localhost:3000.
@@ -76,7 +77,7 @@ This variables can be found in the platform you choose if you would like to use 
 
 ### This command should be used after the deployment in the platform is completed
 
-```
+```bash
 vercel env pull .env.local
 ```
 
@@ -85,7 +86,7 @@ Follow the deployment instructions for your chosen platform. For example, if you
 
 ### 3.1 Commit your changes and push them to your repository:
 
-```
+```bash
 git add .
 git commit -m "Deploy to production"
 git push origin main

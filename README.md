@@ -20,6 +20,137 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
+
+## API Endpoints
+## `GET /api/products`
+Fetches all products from the database.
+
+* Response:
+** Success:
+```json
+[
+  {
+    "id": "unique-product-id",
+    "name": "Product Name",
+    "description": "Product Description",
+    "producer_name": "Producer Name",
+    "producer_email": "producer@example.com",
+    "cover": "https://example.com/cover.jpg",
+    "thumbnail": "https://example.com/thumbnail.jpg",
+    "price": 100.00,
+    "updated_at": "2024-08-10T00:00:00Z",
+    "created_at": "2024-08-10T00:00:00Z"
+  },
+  ...
+]
+```
+** Error:
+```json
+{
+  "error": "Failed to fetch products"
+}
+```
+
+## `POST /api/products/create`
+Creates one or more products in the database.
+
+* Request body:
+** Single Product:
+```json
+{
+  "name": "Product Name",
+  "description": "Product Description",
+  "producer_name": "Producer Name",
+  "producer_email": "producer@example.com",
+  "cover": "https://example.com/cover.jpg",
+  "thumbnail": "https://example.com/thumbnail.jpg",
+  "price": 100.00,
+  "updated_at": "2024-08-10T00:00:00Z",
+  "created_at": "2024-08-10T00:00:00Z"
+}
+
+# or
+
+[
+    {
+        "name": "Product Name",
+        "description": "Product Description",
+        "producer_name": "Producer Name",
+        "producer_email": "producer@example.com",
+        "cover": "https://example.com/cover.jpg",
+        "thumbnail": "https://example.com/thumbnail.jpg",
+        "price": 100.00,
+        "updated_at": "2024-08-10T00:00:00Z",
+        "created_at": "2024-08-10T00:00:00Z"
+    }
+]
+```
+** Multiple products:
+```json
+[
+    {
+        "name": "Product 1",
+        "description": "Description 1",
+        "producer_name": "Producer 1",
+        "producer_email": "producer1@example.com",
+        "cover": "https://example.com/cover1.jpg",
+        "thumbnail": "https://example.com/thumbnail1.jpg",
+        "price": 50.00
+    },
+    {
+        "name": "Product 2",
+        "description": "Description 2",
+        "producer_name": "Producer 2",
+        "producer_email": "producer2@example.com",
+        "cover": "https://example.com/cover2.jpg",
+        "thumbnail": "https://example.com/thumbnail2.jpg",
+        "price": 75.00
+    }
+]
+```
+
+* Response:
+** Success:
+```json
+{
+  "message": "Product(s) created successfully"
+}
+```
+** Error:
+```json
+{
+  "error": "Failed to create product(s)"
+}
+```
+
+## `GET /api/products/[id]`
+Fetches the details of a specific product by its ID.
+
+* Response:
+** Success
+```json
+{
+  "id": "unique-product-id",
+  "name": "Product Name",
+  "description": "Product Description",
+  "producer_name": "Producer Name",
+  "producer_email": "producer@example.com",
+  "cover": "https://example.com/cover.jpg",
+  "thumbnail": "https://example.com/thumbnail.jpg",
+  "price": 100.00,
+  "updated_at": "2024-08-10T00:00:00Z",
+  "created_at": "2024-08-10T00:00:00Z"
+}
+```
+** Error:
+```json
+{
+  "error": "Failed to fetch product details"
+}
+```
+
+
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
